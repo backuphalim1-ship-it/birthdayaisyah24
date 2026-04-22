@@ -2,57 +2,59 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Untuk Kamu ❤️</title>
 
 <style>
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(to right, #ff758c, #ff7eb3);
+  background: black;
   color: white;
   text-align: center;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
-.container {
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-h1 { font-size: 3em; }
-
-p {
-  width: 80%;
-  margin: auto;
-  font-size: 1.2em;
-  line-height: 1.6;
+/* HALAMAN AWAL */
+#start {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 button {
-  margin-top: 20px;
-  padding: 12px 25px;
+  padding: 15px 30px;
+  font-size: 18px;
   border: none;
-  border-radius: 20px;
-  background: white;
-  color: #ff4d6d;
-  font-weight: bold;
-  cursor: pointer;
+  border-radius: 30px;
+  background: #ff4d6d;
+  color: white;
+}
+
+/* HALAMAN UTAMA */
+#main {
+  display: none;
+  padding: 20px;
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.6;
 }
 
 /* FOTO */
-img {
-  width: 220px;
-  margin-top: 20px;
-  border-radius: 20px;
-  display: none;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+.gallery img {
+  width: 90%;
+  max-width: 300px;
+  margin: 10px;
+  border-radius: 15px;
 }
 
 /* LOVE */
 .heart {
-  position: absolute;
-  color: rgba(255,255,255,0.7);
+  position: fixed;
+  color: pink;
   animation: fall 5s linear infinite;
 }
 
@@ -65,20 +67,27 @@ img {
 
 <body>
 
-<div class="container">
-  <h1>Selamat Ulang Tahun 🎉</h1>
+<!-- HALAMAN AWAL -->
+<div id="start">
+  <button onclick="mulai()">Klik Aku ❤️</button>
+</div>
+
+<!-- HALAMAN UTAMA -->
+<div id="main">
+  <h2>Selamat Ulang Tahun 🎉</h2>
 
   <p>
-  Selamat ulang tahun ya sayangku, cintaku, masa depanku ❤️ <br><br>
+  Selamat ulang tahun ya sayangku ❤️ <br><br>
   Makasih yaa sudah sabar… terutama sabar nunggu aku nikahin kamu. <br><br>
   Semoga semua yang kita rencanakan pelan-pelan jadi nyata. <br><br>
   Aku, Abdurrahman Halim, sayang banget sama kamu, Aisyah Aulia Dewi. Selamanya ❤️
   </p>
 
-  <button onclick="showAll()">Klik Aku 💌</button>
-
-  <br>
-  <img id="foto" src="foto.jpg">
+  <div class="gallery">
+    <img src="foto1.jpg">
+    <img src="foto2.jpg">
+    <img src="foto3.jpg">
+  </div>
 </div>
 
 <!-- MUSIK -->
@@ -87,20 +96,21 @@ img {
 </audio>
 
 <script>
-// 🎵 PLAY MUSIK + FOTO
-function showAll() {
-  document.getElementById("foto").style.display = "block";
+function mulai() {
+  alert("Siap ya… ini semua buat kamu ❤️");
+
+  document.getElementById("start").style.display = "none";
+  document.getElementById("main").style.display = "block";
+
   document.getElementById("music").play();
-  alert("Aku serius… kamu masa depanku ❤️");
 }
 
-// 💖 LOVE JATUH
+// LOVE JATUH
 setInterval(() => {
   let heart = document.createElement("div");
   heart.innerHTML = "❤️";
   heart.className = "heart";
   heart.style.left = Math.random() * 100 + "vw";
-  heart.style.fontSize = (Math.random() * 20 + 10) + "px";
   document.body.appendChild(heart);
 
   setTimeout(() => heart.remove(), 5000);
